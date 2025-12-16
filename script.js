@@ -1,14 +1,15 @@
 // =======================================================
 // I. KHU VỰC CÁ NHÂN HÓA (CHỈ CẦN THAY ĐỔI Ở 3 BIẾN ĐẦU)
 // =======================================================
-const CRUSH_NAME = "Quỳnh Anh"; 
-const MEMORY_TEXT = "Cậu không biết đâu, nhưng sự hiện diện của cậu đã khiến những ngày bình thường của tớ trở nên có ý nghĩa hơn rất nhiều. Cậu là nguồn động lực thầm lặng của tớ.";const BUILD_UP_TEXT = "Cậu đã mang lại sự ấm áp và niềm tin cho cuộc sống của tớ. Và đây là..."; // Điều tích cực
+const CRUSH_NAME = "Quỳnh Anh"; // Tên người đó
+const MEMORY_TEXT = "Tớ vẫn nhớ mỗi lần cậu cười, dường như cả căn phòng đều sáng bừng lên. Nụ cười ấy là điều tớ muốn nhìn thấy mãi mãi."; // Nội dung ngưỡng mộ
+const BUILD_UP_TEXT = "Cậu đã mang lại sự ấm áp và niềm tin cho cuộc sống của tớ. Và đây là..."; 
 
 const CONFESSION_MESSAGE = 
     "Nếu cậu là ngọn nến, tớ nguyện làm ánh lửa. Nếu cậu là mùa đông, tớ xin được làm chiếc ôm. Giáng sinh này, giữa muôn vàn ánh đèn lấp lánh, điều tớ ước ao nhất là được cùng cậu bước tiếp. Tớ đã yêu cậu mất rồi. <strong>" + CRUSH_NAME + "</strong>, cậu có đồng ý trở thành 'món quà Giáng sinh vĩnh cửu' của tớ không?";
 
-const TYPING_SPEED = 50; // Tốc độ gõ chữ (ms/ký tự)
-let typingInterval; // Biến toàn cục để lưu ID của Interval
+const TYPING_SPEED = 50; 
+let typingInterval; 
 
 // =======================================================
 // II. Logic Chuyển Phase & Audio
@@ -53,16 +54,12 @@ function changePhase(currentId, nextId) {
 // =======================================================
 
 function startTypingEffect(elementId, text, speed) {
-    // Xóa interval cũ nếu có để tránh lỗi
     if (typingInterval) {
         clearInterval(typingInterval);
     }
-
     const element = document.getElementById(elementId);
     let i = 0;
     element.innerHTML = ''; 
-
-    // Lưu ID interval vào biến toàn cục
     typingInterval = setInterval(() => { 
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
@@ -75,7 +72,7 @@ function startTypingEffect(elementId, text, speed) {
 }
 
 // =======================================================
-// IV. Logic Xử lý Phản hồi Cuối cùng
+// IV. Logic Xử lý Phản hồi Cuối cùng (CÓ DẤU)
 // =======================================================
 
 function handleResponse(isAccepted) {
@@ -83,35 +80,32 @@ function handleResponse(isAccepted) {
     const confessionText = document.getElementById('confession-text');
     const responseButtons = document.querySelector('.response-buttons');
 
-    // Ẩn các nút phản hồi
     responseButtons.classList.add('hidden');
 
-    // Dừng hiệu ứng gõ chữ ngay lập tức
     if (typingInterval) {
         clearInterval(typingInterval);
     }
     
-    // Đảm bảo lời tỏ tình được hiển thị đầy đủ nếu người dùng bấm nút sớm
     confessionText.innerHTML = CONFESSION_MESSAGE; 
 
     if (isAccepted) {
-        // Kịch bản CHẤP NHẬN: Rực rỡ và vui vẻ
+        // Kịch bản CHẤP NHẬN
         confessionPhase.style.background = 'linear-gradient(145deg, #ffd700, #ff8c00)'; 
         confessionPhase.style.boxShadow = '0 0 40px rgba(255, 215, 0, 0.9)';
-        confessionText.innerHTML = "💖 <strong>Vâng! Giáng sinh này là món quà tuyệt vời nhất!</strong> Cảm ơn cậu! Yêu cậu! 🥂";
+        confessionText.innerHTML = "💖 <strong>Vâng! Giáng sinh này là món quà tuyệt vời nhất!</strong> Cảm ơn cậu thật nhiều! Yêu cậu! 🥂";
         confessionText.style.color = '#B73E3E'; 
     } else {
-        // Kịch bản TỪ CHỐI: Nhẹ nhàng và tôn trọng
+        // Kịch bản TỪ CHỐI
         confessionPhase.style.background = 'linear-gradient(145deg, #1f364d, #3a546d)'; 
         confessionPhase.style.boxShadow = 'none';
         confessionText.innerHTML = "😊 Không sao cả. Cảm ơn cậu vì đã chân thành. Tớ trân trọng tình bạn này. Chúc cậu một mùa Giáng sinh thật ấm áp nhé!";
-        confressionText.style.color = 'white';
+        confessionText.style.color = 'white';
     }
 }
 
 
 // =======================================================
-// V. Logic Tuyết rơi & Khởi tạo (ĐÃ SỬA LỖI DẤU SAO)
+// V. Logic Tuyết rơi & Khởi tạo (CÓ DẤU, CHỈ CÒN "Gửi [Tên Crush]")
 // =======================================================
 
 function createSnowflake() {
@@ -132,8 +126,8 @@ function createSnowflake() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Gán Nội dung Cá nhân hóa động vào HTML 
-    document.querySelector('.to-text').innerHTML = `Gửi <strong>${CRUSH_NAME}</strong> ,`;
+    // 1. Gán Nội dung Cá nhân hóa động vào HTML (SỬA LỖI LẦN CUỐI: CHỈ CÒN "Gửi [Tên Crush]")
+    document.querySelector('.to-text').innerHTML = `Gửi <strong>${CRUSH_NAME}</strong>`;
     document.querySelector('.memory-box').innerHTML = MEMORY_TEXT;
     document.querySelector('.final-build-up').innerHTML = BUILD_UP_TEXT;
 
