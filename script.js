@@ -1,7 +1,7 @@
 // =======================================================
-// I. KHU VỰC CÁ NHÂN HÓA (CHỈ CẦN THAY ĐỔI Ở 3 BIẾN ĐẦU)
+// I. KHU VỰC CÁ NHÂN HÓA 
 // =======================================================
-const CRUSH_NAME = "Quỳnh Anh"; // Tên người đó
+const CRUSH_NAME = "Quỳnh Anh";
 const MEMORY_TEXT = "Tớ vẫn nhớ mỗi lần cậu cười, dường như cả căn phòng đều sáng bừng lên. Nụ cười ấy là điều tớ muốn nhìn thấy mãi mãi."; // Nội dung ngưỡng mộ
 const BUILD_UP_TEXT = "Cậu đã mang lại sự ấm áp và niềm tin cho cuộc sống của tớ. Và đây là..."; 
 
@@ -72,7 +72,7 @@ function startTypingEffect(elementId, text, speed) {
 }
 
 // =======================================================
-// IV. Logic Xử lý Phản hồi Cuối cùng (CÓ DẤU)
+// IV. Logic Xử lý Phản hồi Cuối cùng 
 // =======================================================
 
 function handleResponse(isAccepted) {
@@ -105,7 +105,7 @@ function handleResponse(isAccepted) {
 
 
 // =======================================================
-// V. Logic Tuyết rơi & Khởi tạo (CÓ DẤU, CHỈ CÒN "Gửi [Tên Crush]")
+// V. Logic Tuyết rơi & Khởi tạo 
 // =======================================================
 
 function createSnowflake() {
