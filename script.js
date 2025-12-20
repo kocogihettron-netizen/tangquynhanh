@@ -1,7 +1,7 @@
 const CRUSH_NAME = "Quỳnh Anh";
 const MEMORY_TEXT = "Đêm Giáng sinh này, tớ có vài lời muốn nhắn nhủ...";
 const BUILD_UP_TEXT = "Cảm ơn cậu vì đã luôn rạng rỡ, nụ cười của cậu thực sự rất xinh đẹp.";
-const CONFESSION_MESSAGE = `Tớ định giữ kín chuyện này cho riêng mình, nhưng tớ nhận ra cảm xúc dành cho cậu cứ lớn dần lên theo thời gian. Tớ thích cách cậu cười, thích cả sự hiện diện của cậu trong những ngày qua. Thật lòng, tớ thích cậu nhiều hơn mức một người bạn. Trang web này là món quà nhỏ để tớ gửi lời tạm biệt chân thành nhất. Chúc cậu ở nơi mới luôn tỏa sáng, hạnh phúc và gặp thật nhiều điều may mắn như chính con người cậu vậy.`;
+const CONFESSION_MESSAGE = `Tớ định giữ kín chuyện này cho riêng mình, nhưng tớ nhận ra cảm xúc dành cho cậu cứ lớn dần lên theo thời gian. Tớ thích cách cậu cười, thích cả sự hiện diện của cậu trong những ngày qua. Thật lòng, tớ thích cậu . Trang web này là món quà nhỏ để tớ gửi lời tạm biệt chân thành nhất. Chúc cậu ở nơi mới luôn tỏa sáng, hạnh phúc và gặp thật nhiều điều may mắn như chính con người cậu vậy.`;
 
 function changePhase(currentId, nextId) {
     const curr = document.getElementById(currentId);
