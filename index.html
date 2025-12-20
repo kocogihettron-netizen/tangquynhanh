@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giáng Sinh Yêu Thương - Dành cho Người Đặc Biệt</title>
+    <title>Gửi Người Đặc Biệt</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,45 +11,34 @@
     
     <audio id="christmas-music" loop>
         <source src="christmas_music.mp3" type="audio/mpeg"> 
-        Trình duyệt của bạn không hỗ trợ audio.
     </audio>
 
     <div id="snow-container"></div> 
 
     <div id="app-container">
-        
         <div id="phase-1" class="phase active">
-            <h1 class="christmas-title">Món Quà Giáng Sinh Đặc Biệt</h1>
+            <h1 class="christmas-title">Món Quà Cuối Cùng</h1>
             <p class="to-text"></p> 
-            
-            <div class="gift-icon">🎁</div> 
-            <button id="btn-p1" class="cta-button">
-                Mở Quà Ngay
-            </button>
+            <div class="gift-icon" style="font-size: 50px; cursor: pointer;">🎁</div> 
+            <button id="btn-p1" class="cta-button">Mở Quà Ngay</button>
         </div>
 
         <div id="phase-2" class="phase">
-            <p class="intro-text">
-                Đêm Giáng sinh an lành này, tớ có điều quan trọng hơn cả quà cáp muốn nói với cậu...
-            </p>
+            <p class="intro-text">Trước khi cậu chuyển đến nơi ở mới...</p>
             <blockquote class="memory-box"></blockquote>
             <p class="final-build-up"></p>
-            
-            <button id="btn-p2" class="cta-button">
-                Xem Điều Quan Trọng Nhất ❤️
-            </button>
+            <button id="btn-p2" class="cta-button">Xem Điều Quan Trọng Nhất ❤️</button>
         </div>
         
         <div id="phase-3" class="phase confession-phase">
             <div class="confession-box">
                 <p id="confession-text"></p> 
                 <div class="response-buttons hidden">
-                    <button class="response-cta accept">Yes, I do!</button>
-                    <button class="response-cta reject">Just Friends</button>
+                    <button class="response-cta accept" onclick="handleResponse(true)">1</button>
+                    <button class="response-cta reject" onclick="handleResponse(false)">2</button>
                 </div>
             </div>
         </div>
-
     </div>
     
     <script src="script.js"></script>

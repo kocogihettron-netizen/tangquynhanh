@@ -1,8 +1,11 @@
-/* Thiết lập chung */
+/* =======================================================
+   I. THIẾT LẬP CHUNG
+   ======================================================= */
 :root {
-    --color-bg-dark: #1f364d; /* Xanh đậm cho nền */
-    --color-primary: #B73E3E; /* Đỏ Burgundy ấm áp */
-    --color-secondary: #ffead8; /* Vàng kem / Trắng ấm */
+    --color-bg: #0f172a;      /* Xanh đen */
+    --gold: #ffd700;          /* Vàng kim */
+    --gold-glow: rgba(255, 215, 0, 0.4);
+    --white: #ffffff;
 }
 
 body {
@@ -12,122 +15,156 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-bg-dark);
-    color: var(--color-secondary);
+    background-color: var(--color-bg);
+    color: var(--white);
     font-family: 'Montserrat', sans-serif;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
-/* Ứng dụng Container */
+/* Container chính */
 #app-container {
-    width: 90%;
-    max-width: 600px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
-    background: rgba(31, 54, 77, 0.9); 
+    width: 85%;
+    max-width: 550px;
+    padding: 40px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
 
-/* Các Giai đoạn (Transition cho cả opacity và transform) */
+/* =======================================================
+   II. PHẦN CHỮ (FIX LỖI CHRISTMAS-TITLE)
+   ======================================================= */
 .phase {
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; 
+    transition: all 0.8s ease;
     opacity: 0;
     display: none;
-    transform: scale(0.95); /* Bắt đầu nhỏ hơn một chút */
+    transform: translateY(20px);
 }
+
 .phase.active {
     opacity: 1;
     display: block;
-    transform: scale(1); /* Trở lại kích thước bình thường */
+    transform: translateY(0);
 }
 
-/* Thiết lập riêng cho phase 3 (Kịch tính hơn) */
-.confession-phase {
-    background: linear-gradient(145deg, #B73E3E, #9e3232); 
-    padding: 40px 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(183, 62, 62, 0.7);
-    color: white; 
-    transition: all 1s ease; /* Transition dài hơn cho hiệu ứng kịch tính */
-}
-/* Hiệu ứng ZOOM IN nhẹ cho Phase 3 */
-#phase-3.active {
-    transform: scale(1.05); 
-}
-
-
-/* Typography & Nút */
+/* Fix lỗi đổ màu Gradient cho chữ */
 .christmas-title {
     font-family: 'Dancing Script', cursive;
     font-size: 3em;
-    color: #ffd700; 
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-.confession-box #confession-text {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.8em;
-    font-weight: 700;
-    line-height: 1.5;
-    min-height: 100px; 
-}
-.cta-button {
-    padding: 12px 30px;
-    margin-top: 25px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: var(--color-bg-dark);
-    background-color: var(--color-secondary);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.cta-button:hover {
-    background-color: white;
-    transform: scale(1.05);
-}
-.response-buttons {
-    margin-top: 30px;
-}
-.response-cta {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: 2px solid white;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.accept {
-    background-color: var(--color-secondary);
-    color: var(--color-bg-dark);
-}
-.reject {
-    background-color: transparent;
-    color: white;
-}
-.hidden {
-    display: none;
+    margin-bottom: 20px;
+    color: var(--gold); /* Màu dự phòng nếu trình duyệt lỗi */
+    background: linear-gradient(to bottom, #ffd700, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
-/* --- Hiệu ứng Tuyết rơi CSS --- */
+.to-text strong {
+    color: #ff4d4d;
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+}
+
+#confession-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    line-height: 1.6;
+    color: #f8f9fa;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* =======================================================
+   III. NÚT BẤM (VIỀN PHÁT SÁNG)
+   ======================================================= */
+.cta-button {
+    padding: 12px 30px;
+    background: var(--gold);
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    color: var(--color-bg);
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--gold);
+}
+
+.response-buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.response-cta {
+    padding: 12px 25px;
+    border-radius: 50px;
+    background: transparent;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1.2px;
+    transition: all 0.4s ease;
+}
+
+/* Nút Trân Trọng */
+.accept {
+    border: 2px solid var(--gold);
+    color: var(--gold);
+}
+
+.accept:hover {
+    background-color: var(--gold) !important;
+    color: var(--color-bg) !important;
+    box-shadow: 0 0 30px var(--gold);
+    transform: translateY(-5px);
+}
+
+/* Nút Hành Trình Mới */
+.reject {
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.reject:hover {
+    background-color: var(--white) !important;
+    color: var(--color-bg) !important;
+    box-shadow: 0 0 30px var(--white);
+    transform: translateY(-5px);
+}
+
+/* =======================================================
+   IV. TUYẾT RƠI
+   ======================================================= */
 #snow-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; 
+    pointer-events: none;
     z-index: 5;
 }
-@keyframes snowfall {
-    0% { transform: translateY(-100%) translateX(0); }
-    100% { transform: translateY(100vh) translateX(20px); } 
-}
+
 .snowflake {
     position: absolute;
     background: white;
     border-radius: 50%;
+}
+
+@keyframes snowfall {
+    0% { transform: translateY(-10vh); }
+    100% { transform: translateY(110vh); }
+}
+
+.hidden {
+    display: none !important;
 }
