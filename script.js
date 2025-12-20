@@ -1,7 +1,6 @@
 const CRUSH_NAME = "Quỳnh Anh";
 const MEMORY_TEXT = "Đêm Giáng sinh này, tớ có vài lời muốn nhắn nhủ...";
 const BUILD_UP_TEXT = "Cảm ơn cậu vì đã luôn rạng rỡ, nụ cười của cậu thực sự rất xinh đẹp.";
-
 const CONFESSION_MESSAGE = `Tớ định giữ kín chuyện này cho riêng mình, nhưng tớ nhận ra cảm xúc dành cho cậu cứ lớn dần lên theo thời gian. Tớ thích cách cậu cười, thích cả sự hiện diện của cậu trong những ngày qua. Thật lòng, tớ thích cậu nhiều hơn mức một người bạn. Trang web này là món quà nhỏ để tớ gửi lời tạm biệt chân thành nhất. Chúc cậu ở nơi mới luôn tỏa sáng, hạnh phúc và gặp thật nhiều điều may mắn như chính con người cậu vậy.`;
 
 function changePhase(currentId, nextId) {
@@ -33,16 +32,30 @@ function startTypingEffect(elementId, text, speed) {
 
 function handleResponse(isAccepted) {
     const text = document.getElementById('confession-text');
-    document.querySelector('.response-buttons').style.display = 'none';
+    const buttonContainer = document.querySelector('.response-buttons');
+    const confessionBox = document.querySelector('.confession-box');
     
+    buttonContainer.classList.add('hidden');
     text.style.transition = "all 1s";
+    
     if(isAccepted) {
         text.style.color = "#ffd700";
-        text.innerHTML = "Cảm ơn cậu vì đã đến";
+        text.innerHTML = "Cảm ơn cậu vì đã đến ❤️";
     } else {
         text.style.color = "#ffffff";
         text.innerHTML = "Chúc hành trình mới của cậu rực rỡ. Hãy luôn tự tin và tỏa sáng nhé! ✨";
     }
+
+    const backBtn = document.createElement('button');
+    backBtn.innerHTML = "← Quay lại lựa chọn";
+    backBtn.className = "back-choice-btn";
+    backBtn.onclick = () => {
+        buttonContainer.classList.remove('hidden');
+        text.style.color = "#f8f9fa";
+        text.innerHTML = CONFESSION_MESSAGE;
+        backBtn.remove();
+    };
+    confessionBox.appendChild(backBtn);
 }
 
 function createSnowflake() {
